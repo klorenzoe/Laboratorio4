@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <script src="/javascripts/bootstrap.js"></script>
+  </head>
+  <body>
+      <div class="jumbotron text-center">
+          <h1 class="display-3 pb-5">{{ name }}</h1>
+          <button name="serie1" id="serie1" class="btn btn-outline-info btn-lg col-2" onclick="window.location.href='/JWT'">JWT</button>
+          <button name="serie2" id="serie2" class="btn btn-outline-info btn-lg col-2" onclick="window.location.href='/PizzaCRUD'">Pizza</button>
+          <button name="serie3" id="serie3" class="btn btn-outline-info btn-lg col-2" onclick="window.location.href='/PizzaDB'">Pizza & MongoDB</button>
+      </div>
+  </body>
+</html>
