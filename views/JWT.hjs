@@ -3,7 +3,8 @@
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/css/bootstrap.css' />
-    <script src="/js/bootstrap.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/laboratorio4.js"></script>
   </head>
   <body>
       <div class="jumbotron text-center">
@@ -15,16 +16,14 @@
       <div class="form-group row">
           <div class="col-md-5" >
           <label class="m-1">Contraseña:</label>
-          <input class="form-control" type="password" id="JSON_PASSWORD">
+          <input class="form-control" id="JSON_PASSWORD" value='{{password}}'>
           <label class="m-1">Contenido:</label>
-          <textarea class="form-control" id="JSON_CONTENT" rows="5" class="form-control"></textarea>
-          <label class="m-1">Fecha de caducidad:</label>
-          <input class="form-control" type="datetime-local" id="JSON_DATE">
-          <button name="generar_JWT" id="btn_jwt" class="btn btn-success float-right  mt-2">Generar Token</button>
+          <textarea class="form-control" id="JSON_CONTENT" rows="5" class="form-control">{{content}}</textarea>
+          <button name="generar_JWT" id="btn_jwt" class="btn btn-success float-right  mt-2" onclick="loadJWT()">Generar Token</button>
           </div>
           <div class="col-md-5" > 
           <label class="m-1">Token:</label>
-          <textarea class="form-control" id="JWT_DATA" rows="15" class="form-control">{{value}}</textarea>
+          <textarea class="form-control" id="JWT_DATA" rows="11" class="form-control">{{token}}</textarea>
           </div>
       </div>
   </body>
