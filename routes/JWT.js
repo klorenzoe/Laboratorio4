@@ -4,7 +4,7 @@ var jsonwebtoken = require('jsonwebtoken');
 /* GET users listing. */
 router.get('/', function(req, res, next)
 {
-  res.render('JWT', { title: 'Main', name: 'JSON Web Token', password : '', content : '', token : '' });
+  res.render('JWT', { title: 'JSON Web Tokens', name: 'JSON Web Tokens', password : '', content : '', token : '' });
 });
 
 router.get('/:content', function(req, res, next)

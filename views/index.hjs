@@ -4,13 +4,16 @@
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/css/bootstrap.css' />
     <script src="/javascripts/bootstrap.js"></script>
+    <script src="/javascripts/laboratorio4.js"></script>
   </head>
   <body>
-      <div class="jumbotron text-center">
-          <h1 class="display-3 pb-5">{{ name }}</h1>
-          <button name="serie1" id="serie1" class="btn btn-outline-info btn-lg col-2" onclick="window.location.href='/JWT'">JWT</button>
-          <button name="serie2" id="serie2" class="btn btn-outline-info btn-lg col-2" onclick="window.location.href='/PizzaCRUD'">Pizza</button>
-          <button name="serie3" id="serie3" class="btn btn-outline-info btn-lg col-2" onclick="window.location.href='/PizzaDB'">Pizza & MongoDB</button>
+      <div class="text-center">
+          <h1 class="display-3">{{ name }}</h1>
+          <h3 class="pb-5"><small>Seleccione un menú</small></h3>
+          <button name="serie1" id="serie1" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/JWT'">JWT</button>
+          <button name="serie2" id="serie2" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Pizza</button>
+          <button name="serie3" id="serie3" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaDB'">Pizza & MongoDB</button>
+      <hr>
       </div>
   </body>
 </html>
