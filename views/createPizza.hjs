@@ -40,39 +40,39 @@
 
               <div class="form-group row">
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="jamon" name="jamon">
+                      <input type="checkbox" class="form-check-input" value="Jamón" name="mix">
                       Jamón
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="peperoni" name="peperoni">
+                      <input type="checkbox" class="form-check-input" value="Peperoni" name="mix">
                       Peperoni
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="champiñones" name="champiñones">
+                      <input type="checkbox" class="form-check-input" value="Champiñones" name="mix">
                       Chapiñones
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="pimientos" name="pimientos">
+                      <input type="checkbox" class="form-check-input" value="Pimientos" name="mix">
                       Pimientos
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="cebolla" name="cebolla">
+                      <input type="checkbox" class="form-check-input" value="Cebolla" name="mix">
                       Cebolla
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="anchoas" name="anchoas">
+                      <input type="checkbox" class="form-check-input" value="Anchoas" name="mix">
                       Anchoas
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="pina" name="pina">
+                      <input type="checkbox" class="form-check-input" value="Piña" name="mix">
                       Piña
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="tomates" name="tomates">
+                      <input type="checkbox" class="form-check-input" value="Tomates" name="mix">
                       Tomates
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" id="albahaca" name="albahaca">
+                      <input type="checkbox" class="form-check-input" value="Albahaca" name="mix">
                       Albahaca
                   </label>
               </div>
@@ -83,15 +83,15 @@
   
                 <div class="form-group row">
                     <label class="form-check-label pl-5">
-                        <input type="radio" class="form-check-input" id="delgada" name="masa">
+                        <input type="radio" class="form-check-input" value="Delgada" name="masa">
                         Delgada
                     </label>
                     <label class="form-check-label pl-5">
-                        <input type="radio" class="form-check-input" id="normal" name="masa">
+                        <input type="radio" class="form-check-input" value="Normal" name="masa">
                         Normal
                     </label>
                     <label class="form-check-label pl-5">
-                        <input type="radio" class="form-check-input" id="pan" name="masa">
+                        <input type="radio" class="form-check-input" value="Pan" name="masa">
                         Pan
                     </label>
                 </div>
@@ -102,7 +102,7 @@
       
                 <div class="form-group row">
                     <label class="form-check-label pl-5">
-                        <input type="checkbox" class="form-check-input" id="jamon" name="jamon">
+                        <input type="checkbox" class="form-check-input" value="1" name="queso">
                         Con Extra Queso!
                     </label>
                 </div>
