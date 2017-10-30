@@ -18,8 +18,8 @@
           <h3 class="pb-3"></h3>
         </div>
       <div class="text-center pt-10">
-            <button name="serie1" id="serie1" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear Pizza</button>
-            <button name="serie2" id="serie2" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Editar Pizzas</button>
+        <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Empezar de nuevo</button>
+        <button name="verPizzas" id="verPizzas" class="btn btn-outline-warning btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Ver mis Pizzas</button>
     </div>
       <div class="container text-center">
           <form action="Created" method="post">

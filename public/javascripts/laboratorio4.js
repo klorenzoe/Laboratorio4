@@ -15,9 +15,9 @@ function loadPizzas(pizzaJSON)
     // Constantes 
     let btn_edit = '<button type="submit" class="btn btn-warning m-1">Editar</button>';
     let btn_delete = '<button type="submit" class="btn btn-danger m-1">Borrar</button>';
-    let form_edit = '<form action="Edit" method="get">';
-    let form_delete = '<form action="Delete" method="post">';
-    let hidden = '<input type="hidden" value="';
+    let form_edit = '<form action="pizzaCRUD/Update" method="get">';
+    let form_delete = '<form action="pizzaCRUD/Delete" method="get">';
+    let hidden = '<input type="text" style="display: none;" name="name" value="';
     let hiddenf = '">';
 
     for(var pizza in pizzas)
