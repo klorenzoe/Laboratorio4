@@ -25,18 +25,28 @@ router.get('/Search', function(req, res, next)
 {
   //recuperamos la variable name, que se envia desde el searchPizza en el unico form
   var pizzaName = req.query.name;
+  console.log(pizzaName);
   //creamos una nueva lista de pizzas que encajen con la busqueda
   var subPizzas = {}
   //Se busca en todos los elementos de pizzas
-  for (var pizzaKey in pizzas)
+
+//subPizzas = pizzas.filter(x => x.name.startsWith(pizzaName));
+var showMessage = 'Nada fue encontrado';  
+for (var pizzaKey in pizzas)
   {
+    if(pizzaKey !== undefined){
+      if(pizzaKey.startsWith(pizzaName)){
+        showMessage ='';
+        subPizzas[pizzaKey] = pizzas[pizzaKey]; 
+      }
+    }
     // haces tu algoritmo
     // si una busqueda encaja lo guardamos asi
     // subPizzas[pizzaKey] = pizzas[pizzasKey];
   }
- res.render('searchPizza', { title: 'Pizza CRUD', name: 'Pizza CRUD', /*Este guarda el valor que se busco y lo manda al input type='text'*/ word : ''/*en lugar de las comillas debe ir req.query.name*/, message1: 'Este es un mensaje pequeño', message2 : 'Este es uno grande...',rows : /*En lugar de retornar pizzas, retornamos subPizzas*/JSON.stringify(pizzas)});
+ res.render('searchPizza', { title: 'Pizza CRUD', name: 'Pizza CRUD', /*Este guarda el valor que se busco y lo manda al input type='text'*/ word : req.query.name/*en lugar de las comillas debe ir req.query.name*/, message1: showMessage, message2 : '',rows : /*En lugar de retornar pizzas, retornamos subPizzas*/JSON.stringify(subPizzas)});
 });
-
+                                 
 
 router.post('/Created', function(req, res, next)
  {

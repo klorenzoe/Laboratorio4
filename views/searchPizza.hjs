@@ -20,7 +20,7 @@
 
         <div class="text-center pt-10">        
           <form action="Search" class="form-inline justify-content-center">
-              <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
+              <button type="button" name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
               <input type="text" class="form-control form-control-lg m-1 ml-5" id="last_name" name="name" placeholder="Nombre de la Pizza" value='{{ word }}'>
               <button type="submit" class="btn btn-outline-success btn-lg m-1">Buscar</button>
           </div>
