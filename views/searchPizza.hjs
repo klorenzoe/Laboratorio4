@@ -19,13 +19,17 @@
         </div>
 
         <div class="text-center pt-10">        
-          <form action="pizzaCRUD/Search" class="form-inline justify-content-center">
+          <form action="Search" class="form-inline justify-content-center">
               <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
-              <input type="text" class="form-control form-control-lg m-1 ml-5" id="last_name" name="name" placeholder="Nombre de la Pizza">
+              <input type="text" class="form-control form-control-lg m-1 ml-5" id="last_name" name="name" placeholder="Nombre de la Pizza" value='{{ word }}'>
               <button type="submit" class="btn btn-outline-success btn-lg m-1">Buscar</button>
           </div>
         </div>
       <h3 class="pb-3"></h3>
+      <div class="container text-center">
+        <h5>{{ message1 }}</h5>
+        <h3 class="display-3">{{message2}}</h3>
+      </div>
       <div class="container text-center">
           <table class="table table-hover" id="pizzasInfo">
               <thead>
