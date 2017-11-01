@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>Pizza CRUD</title>
     <link rel='stylesheet' href='/css/bootstrap.css' />
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/pizza.js"></script>
     <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/laboratorio4.js"></script>
   </head>
   <body onload="loadPizzas('{{rows}}')">
       <div class="text-center">
-          <h1 class="display-3">{{ name }}</h1>
+          <h1 class="display-3">Pizza CRUD</h1>
           <h3 class="pb-5"><small>Seleccione un menú</small></h3>
           <button name="serie1" id="serie1" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/JWT'">JWT</button>
           <button name="serie2" id="serie2" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Pizza</button>
@@ -18,12 +20,16 @@
           <h3 class="pb-3"></h3>
         </div>
 
-        <div class="text-center pt-10">        
-          <form action="pizzaCRUD/Search" class="form-inline justify-content-center">
-              <button type="button" name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
-              <input type="text" class="form-control form-control-lg m-1 ml-5" id="last_name" name="name" placeholder="Nombre de la Pizza">
-              <button type="submit" class="btn btn-outline-success btn-lg m-1">Buscar</button>
+        <div class="">        
+          <div class="form-inline justify-content-center text-center pt-10">
+            <button type="button" name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>              
+            <button name="verPizzas" id="verPizzas" class="btn btn-outline-warning btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Ver mis Pizzas</button>
           </div>
+          <div class="form-inline form-inline justify-content-center text-center pt-10">
+            <input type="text" class="form-control form-control-lg m-1" id="word" name="word" placeholder="Nombre de la Pizza">
+            <button id="btn_SearchPizza" class="btn btn-outline-success btn-lg m-1">Buscar</button>
+          </div>
+            
         </div>
       <h3 class="pb-3"></h3>
       <div class="container text-center">

@@ -9,7 +9,7 @@
     <script src="/javascripts/laboratorio4.js"></script>
     
   </head>
-  <body>
+  <body onload="updatePizzas('{{ rows }}')">
       <div class="text-center">
           <h1 class="display-3">Pizza CRUD</h1>
           <h3 class="pb-5"><small>Seleccione un menú</small></h3>
@@ -21,7 +21,7 @@
           <h3 class="pb-3"></h3>
         </div>
       <div class="text-center pt-10">
-        <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Empezar de nuevo</button>
+        <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
         <button name="verPizzas" id="verPizzas" class="btn btn-outline-warning btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Ver mis Pizzas</button>
     </div>
       <div class="container text-center" id="content">
@@ -29,11 +29,8 @@
             
               <div class="form-group row">
                 <label class="col-form-label">Nombre</label>
-                <input type="text" class="form-control" id="pizzaName" name="pizzaName">
+                <input type="text" class="form-control" id="pizzaName" name="pizzaName" readonly="readonly">
               </div>
-              <div class="alert alert-danger" id="nameMessage" role="alert">
-                    <strong>¡Cuidado!</strong> El nombre está vacío o no es válido.
-                </div>
               
               <div class="form-group row">
                 <label class="col-form-label">Descripción</label>
@@ -48,39 +45,39 @@
 
               <div class="form-group row">
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Jamón" name="mix">
+                      <input type="checkbox" id="jamon" class="form-check-input" value="Jamón" name="mix">
                       Jamón
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Peperoni" name="mix">
+                      <input type="checkbox" id="pepe" class="form-check-input" value="Peperoni" name="mix">
                       Peperoni
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Champiñones" name="mix">
+                      <input type="checkbox" id="champ" class="form-check-input" value="Champiñones" name="mix">
                       Chapiñones
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Pimientos" name="mix">
+                      <input type="checkbox" id="pimi" class="form-check-input" value="Pimientos" name="mix">
                       Pimientos
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Cebolla" name="mix">
+                      <input type="checkbox" id="cebol" class="form-check-input" value="Cebolla" name="mix">
                       Cebolla
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Anchoas" name="mix">
+                      <input type="checkbox" id="anch" class="form-check-input" value="Anchoas" name="mix">
                       Anchoas
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Piña" name="mix">
+                      <input type="checkbox" id="pina"class="form-check-input" value="Piña" name="mix">
                       Piña
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Tomates" name="mix">
+                      <input type="checkbox" id="tomat" class="form-check-input" value="Tomates" name="mix">
                       Tomates
                   </label>
                   <label class="form-check-label pl-5">
-                      <input type="checkbox" class="form-check-input" value="Albahaca" name="mix">
+                      <input type="checkbox" id="albah" class="form-check-input" value="Albahaca" name="mix">
                       Albahaca
                   </label>
               </div>
@@ -127,7 +124,7 @@
                             <strong>¡Cuidado!</strong> No se ha seleccionado las porciones de la pizza o no es un valor válido.
                     </div>
                 </div>
-                <button name="btn_CreatePizza" id="btn_CreatePizza" class="btn btn-success btn-block">Crear Pizza!</button>       
+                <button name="btn_UpdatePizza" id="btn_UpdatePizza" class="btn btn-success btn-block">Editar Pizza!</button>       
           
                 <h3 class="pb-3"></h3>
                 <h3 class="pb-3"></h3>
