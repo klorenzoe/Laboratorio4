@@ -1,3 +1,4 @@
+
 function loadJWT()
 {
     var password = document.getElementById('JSON_PASSWORD').value;
@@ -7,18 +8,15 @@ function loadJWT()
 
 function loadPizzas(pizzaJSON)
 {
-    console.log(pizzaJSON);
     var pizzas = JSON.parse(pizzaJSON);
     //Obtenemos la tabla
     var table = document.getElementById("pizzasInfo").getElementsByTagName("tbody")[0];
-    
+    table.innerHTML = "";
     // Constantes 
-    let btn_edit = '<button type="submit" class="btn btn-warning m-1">Editar</button>';
-    let btn_delete = '<button type="submit" class="btn btn-danger m-1">Borrar</button>';
-    let form_edit = '<form action="pizzaCRUD/Update" method="get">';
-    let form_delete = '<form action="pizzaCRUD/Delete" method="get">';
-    let hidden = '<input type="text" style="display: none;" name="name" value="';
-    let hiddenf = '">';
+    let btn_edit = '<button type="submit" name="'
+    let btn_edit_f = '" class="btn btn-warning m-1">Editar</button>';
+    let btn_delete = '<button id="btn_DeletePizza" name="'
+    let btn_delete_f = '" class="btn btn-danger m-1">Borrar</button>';
 
     for(var pizza in pizzas)
     {
@@ -39,7 +37,26 @@ function loadPizzas(pizzaJSON)
         pizzaMass.innerHTML = pizzas[pizza].mass;
         pizzaCheese.innerHTML = pizzas[pizza].cheese === "1" ? "Sí":'No';
         pizzaPieces.innerHTML = pizzas[pizza].pieces;
-        pizzaOptions.innerHTML = form_edit + hidden +  pizzas[pizza].name + hiddenf + btn_edit + '</form>';
-        pizzaOptions.innerHTML += form_delete + hidden +  pizzas[pizza].name + hiddenf + btn_delete + '</form>';
+        pizzaOptions.innerHTML = btn_edit + pizzas[pizza].name  + btn_edit_f;
+        pizzaOptions.innerHTML += btn_delete + pizzas[pizza].name  + btn_delete_f;
     }
+}
+
+function makeRequest(requestType, requestLink, dataJSON, successFunction)
+{
+    $.ajax({
+        type: requestType,
+        url: 'http://localhost:3000/' + requestLink,
+        data: dataJSON,
+        dataType: 'json',
+        success : successFunction
+    });
+}
+
+function showMessage(dataJSON){
+    $('#form_CreatePizza').fadeOut();
+    $('#message').html(dataJSON.message);
+    $('#status').html(dataJSON.status);
+    $('#message').show();
+    $('#status').show();
 }

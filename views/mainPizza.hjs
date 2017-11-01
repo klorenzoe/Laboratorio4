@@ -3,6 +3,8 @@
   <head>
     <title>{{ title }}</title>
     <link rel='stylesheet' href='/css/bootstrap.css' />
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/pizza.js"></script>
     <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/laboratorio4.js"></script>
   </head>
@@ -18,12 +20,10 @@
           <h3 class="pb-3"></h3>
         </div>
 
-        <div class="text-center pt-10">        
-          <form action="pizzaCRUD/Search" class="form-inline justify-content-center">
-              <button type="button" name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
-              <input type="text" class="form-control form-control-lg m-1 ml-5" id="last_name" name="name" placeholder="Nombre de la Pizza">
-              <button type="submit" class="btn btn-outline-success btn-lg m-1">Buscar</button>
-          </div>
+        <div class="form-inline justify-content-center text-center pt-10">        
+            <button type="button" name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
+            <input type="text" class="form-control form-control-lg m-1 ml-5" id="word" name="word" placeholder="Nombre de la Pizza">
+            <button id="btn_SearchPizza" class="btn btn-outline-success btn-lg m-1">Buscar</button>
         </div>
       <h3 class="pb-3"></h3>
       <div class="container text-center">

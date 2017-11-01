@@ -2,9 +2,12 @@
 <html>
   <head>
     <title>{{ title }}</title>
-    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel='stylesheet' href='/css/bootstrap.css' />    
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/pizza.js"></script>
     <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/laboratorio4.js"></script>
+    
   </head>
   <body>
       <div class="text-center">
@@ -21,19 +24,24 @@
         <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Empezar de nuevo</button>
         <button name="verPizzas" id="verPizzas" class="btn btn-outline-warning btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Ver mis Pizzas</button>
     </div>
-      <div class="container text-center">
-          <form action="Created" method="post">
+      <div class="container text-center" id="content">
+          <div class="form" id="form_CreatePizza">
             
               <div class="form-group row">
                 <label class="col-form-label">Nombre</label>
                 <input type="text" class="form-control" id="pizzaName" name="pizzaName">
               </div>
+              <div class="alert alert-danger" id="nameMessage" role="alert">
+                    <strong>¡Cuidado!</strong> El nombre está vacío o no es válido.
+                </div>
               
               <div class="form-group row">
                 <label class="col-form-label">Descripción</label>
                 <textarea class="form-control" id="pizzaDesc" name="pizzaDesc"></textarea>
               </div>
-              
+              <div class="alert alert-danger" id="descMessage" role="alert">
+                    <strong>¡Cuidado!</strong> La descripción está vacía o no es válida.
+                </div>
               <div class="form-group row">
                   <label class="col-form-label">Ingredientes</label><br>
               </div>
@@ -95,6 +103,9 @@
                         Pan
                     </label>
                 </div>
+                <div class="alert alert-danger" id="massMessage" role="alert">
+                        <strong>¡Cuidado!</strong> No se ha seleccionado el tipo de masa.
+                </div>
 
                 <div class="form-group row">
                     <label class="col-form-label">Extra Queso</label><br>
@@ -111,13 +122,19 @@
                         <label class="col-form-label">Porciones</label><br>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="input-group" id="porciones" name="porciones" min="4" max="16" step="2">
+                    <input type="number" class="input-group" id="porciones" name="porciones" min="4" max="16" step="2" value="8">
+                    <div class="alert alert-danger" id="piecesMessage" role="alert">
+                            <strong>¡Cuidado!</strong> No se ha seleccionado las porciones de la pizza o no es un valor válido.
+                    </div>
                 </div>
-                <button name="btn_createPizza" type="submit" id="btn_createPizza" class="btn btn-success btn-block">Crear Pizza!</button>       
+                <button name="btn_CreatePizza" id="btn_CreatePizza" class="btn btn-success btn-block">Crear Pizza!</button>       
           
                 <h3 class="pb-3"></h3>
                 <h3 class="pb-3"></h3>
             </form>
+        </div>
+        <h3 class="display-3" id="status"></h3>
+        <h5 id="message"></h5>
       </div>
   </body>
 
