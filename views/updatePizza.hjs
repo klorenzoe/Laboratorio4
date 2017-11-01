@@ -1,127 +1,139 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/css/bootstrap.css' />
+  <head>
+    <title>Pizza CRUD</title>
+    <link rel='stylesheet' href='/css/bootstrap.css' />    
+    <script src="/javascripts/jquery-3.2.1.min.js"></script>
+    <script src="/javascripts/pizza.js"></script>
     <script src="/javascripts/bootstrap.js"></script>
     <script src="/javascripts/laboratorio4.js"></script>
-</head>
-
-<body onload="updatePizzas('{{rows}}')">
-    <div class="text-center">
-        <h1 class="display-3">{{ name }}</h1>
-        <h3 class="pb-5"><small>Seleccione un menú</small></h3>
-        <button name="serie1" id="serie1" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/JWT'">JWT</button>
-        <button name="serie2" id="serie2" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Pizza</button>
-        <button name="serie3" id="serie3" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaDB'">Pizza & MongoDB</button>
-        <h3 class="pb-3"></h3>
-        <hr>
-        <h3 class="pb-3"></h3>
-    </div>
-    <div class="text-center pt-10">
-        <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva pizza</button>
+    
+  </head>
+  <body onload="updatePizzas('{{ rows }}')">
+      <div class="text-center">
+          <h1 class="display-3">Pizza CRUD</h1>
+          <h3 class="pb-5"><small>Seleccione un menú</small></h3>
+          <button name="serie1" id="serie1" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/JWT'">JWT</button>
+          <button name="serie2" id="serie2" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Pizza</button>
+          <button name="serie3" id="serie3" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaDB'">Pizza & MongoDB</button>
+          <h3 class="pb-3"></h3>
+          <hr>
+          <h3 class="pb-3"></h3>
+        </div>
+      <div class="text-center pt-10">
+        <button name="crearPizza" id="crearPizza" class="btn btn-outline-success btn-lg m-1" onclick="window.location.href='/PizzaCRUD/Create'">Crear nueva Pizza</button>
         <button name="verPizzas" id="verPizzas" class="btn btn-outline-warning btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Ver mis Pizzas</button>
     </div>
-    <div class="container text-center">
-        <form action="Updated" method="post">
-
-            <div class="form-group row">
+      <div class="container text-center" id="content">
+          <div class="form" id="form_CreatePizza">
+            
+              <div class="form-group row">
                 <label class="col-form-label">Nombre</label>
                 <input type="text" class="form-control" id="pizzaName" name="pizzaName" readonly="readonly">
-            </div>
-
-            <div class="form-group row">
+              </div>
+              
+              <div class="form-group row">
                 <label class="col-form-label">Descripción</label>
                 <textarea class="form-control" id="pizzaDesc" name="pizzaDesc"></textarea>
-            </div>
+              </div>
+              <div class="alert alert-danger" id="descMessage" role="alert">
+                    <strong>¡Cuidado!</strong> La descripción está vacía o no es válida.
+                </div>
+              <div class="form-group row">
+                  <label class="col-form-label">Ingredientes</label><br>
+              </div>
 
-            <div class="form-group row">
-                <label class="col-form-label">Ingredientes</label><br>
-            </div>
+              <div class="form-group row">
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="jamon" class="form-check-input" value="Jamón" name="mix">
+                      Jamón
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="pepe" class="form-check-input" value="Peperoni" name="mix">
+                      Peperoni
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="champ" class="form-check-input" value="Champiñones" name="mix">
+                      Chapiñones
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="pimi" class="form-check-input" value="Pimientos" name="mix">
+                      Pimientos
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="cebol" class="form-check-input" value="Cebolla" name="mix">
+                      Cebolla
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="anch" class="form-check-input" value="Anchoas" name="mix">
+                      Anchoas
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="pina"class="form-check-input" value="Piña" name="mix">
+                      Piña
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="tomat" class="form-check-input" value="Tomates" name="mix">
+                      Tomates
+                  </label>
+                  <label class="form-check-label pl-5">
+                      <input type="checkbox" id="albah" class="form-check-input" value="Albahaca" name="mix">
+                      Albahaca
+                  </label>
+              </div>
 
-            <div class="form-group row">
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="jamon" value="Jamón" name="mix">
-                    Jamón
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="pepe" value="Peperoni" name="mix">
-                    Peperoni
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="champ" value="Champiñones" name="mix">
-                    Chapiñones
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="pimi" value="Pimientos" name="mix">
-                    Pimientos
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="cebol" value="Cebolla" name="mix">
-                    Cebolla
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="anch" value="Anchoas" name="mix">
-                    Anchoas
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="pina" value="Piña" name="mix">
-                    Piña
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="tomat" value="Tomates" name="mix">
-                    Tomates
-                </label>
-                <label class="form-check-label pl-5">
-                    <input type="checkbox" class="form-check-input" id="albah" value="Albahaca" name="mix">
-                    Albahaca
-                </label>
-            </div>
-
-            <div class="form-group row">
-                <label class="col-form-label">Tipo de masa</label><br>
-            </div>
-
-            <div class="form-group row">
-                <label class="form-check-label pl-5">
+              <div class="form-group row">
+                    <label class="col-form-label">Tipo de masa</label><br>
+                </div>
+  
+                <div class="form-group row">
+                    <label class="form-check-label pl-5">
                         <input type="radio" class="form-check-input" value="Delgada" name="masa">
                         Delgada
                     </label>
-                <label class="form-check-label pl-5">
+                    <label class="form-check-label pl-5">
                         <input type="radio" class="form-check-input" value="Normal" name="masa">
                         Normal
                     </label>
-                <label class="form-check-label pl-5">
+                    <label class="form-check-label pl-5">
                         <input type="radio" class="form-check-input" value="Pan" name="masa">
                         Pan
                     </label>
-            </div>
+                </div>
+                <div class="alert alert-danger" id="massMessage" role="alert">
+                        <strong>¡Cuidado!</strong> No se ha seleccionado el tipo de masa.
+                </div>
 
-            <div class="form-group row">
-                <label class="col-form-label">Extra Queso</label><br>
-            </div>
-
-            <div class="form-group row">
-                <label class="form-check-label pl-5">
+                <div class="form-group row">
+                    <label class="col-form-label">Extra Queso</label><br>
+                </div>
+      
+                <div class="form-group row">
+                    <label class="form-check-label pl-5">
                         <input type="checkbox" class="form-check-input" value="1" name="queso">
                         Con Extra Queso!
                     </label>
-            </div>
+                </div>
 
-            <div class="form-group row">
-                <label class="col-form-label">Porciones</label><br>
-            </div>
-            <div class="form-group">
-                <input type="number" class="input-group" id="porciones" name="porciones" min="4" max="16" step="2">
-            </div>
-            <button name="btn_createPizza" type="submit" id="btn_createPizza" class="btn btn-success btn-block">Editar Pizza</button>
-
-            <h3 class="pb-3"></h3>
-            <h3 class="pb-3"></h3>
-        </form>
-    </div>
-</body>
+                <div class="form-group row">
+                        <label class="col-form-label">Porciones</label><br>
+                </div>
+                <div class="form-group">
+                    <input type="number" class="input-group" id="porciones" name="porciones" min="4" max="16" step="2" value="8">
+                    <div class="alert alert-danger" id="piecesMessage" role="alert">
+                            <strong>¡Cuidado!</strong> No se ha seleccionado las porciones de la pizza o no es un valor válido.
+                    </div>
+                </div>
+                <button name="btn_UpdatePizza" id="btn_UpdatePizza" class="btn btn-success btn-block">Editar Pizza!</button>       
+          
+                <h3 class="pb-3"></h3>
+                <h3 class="pb-3"></h3>
+            </form>
+        </div>
+        <h3 class="display-3" id="status"></h3>
+        <h5 id="message"></h5>
+      </div>
+  </body>
 
 
 </html>

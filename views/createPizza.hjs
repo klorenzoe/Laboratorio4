@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>{{ title }}</title>
+    <title>Pizza CRUD</title>
     <link rel='stylesheet' href='/css/bootstrap.css' />    
     <script src="/javascripts/jquery-3.2.1.min.js"></script>
     <script src="/javascripts/pizza.js"></script>
@@ -11,7 +11,7 @@
   </head>
   <body>
       <div class="text-center">
-          <h1 class="display-3">{{ name }}</h1>
+          <h1 class="display-3">Pizza CRUD</h1>
           <h3 class="pb-5"><small>Seleccione un menú</small></h3>
           <button name="serie1" id="serie1" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/JWT'">JWT</button>
           <button name="serie2" id="serie2" class="btn btn-outline-info btn-lg m-1" onclick="window.location.href='/PizzaCRUD'">Pizza</button>

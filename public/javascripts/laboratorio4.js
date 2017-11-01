@@ -11,78 +11,43 @@ function updatePizzas(pizzaJSON) {
     var pizza = JSON.parse(pizzaJSON);
     document.getElementById('pizzaName').value = pizza.name;
     document.getElementById('pizzaDesc').value = pizza.desc;
-    var ingrediente = document.getElementsByName('mix');
+    var ingredientes = pizza.mix.split(" ");
 
-    console.log(typeof pizza.mix === "string");
-    if (typeof pizza.mix === "string") {
-            switch (pizza.mix) {
-                case "Jamón":
-                    document.getElementById('jamon').checked = true;
-                    break;
-                case "Peperoni":
-                    document.getElementById('pepe').checked = true;
-                    break;
-                case "Champiñones":
-                    document.getElementById('champ').checked = true;
-                    break;
-                case "Pimientos":
-                    document.getElementById('pimi').checked = true;
-                    break;
-                case "Cebolla":
-                    document.getElementById('cebol').checked = true;
-                    break;
-                case "Anchoas":
-                    document.getElementById('anch').checked = true;
-                    break;
-                case "Piña":
-                    document.getElementById('pina').checked = true;
-                    break;
-                case "Tomates":
-                    document.getElementById('tomat').checked = true;
-                    break;
-                case "Albahaca":
-                    document.getElementById('albah').checked = true;
-                    break;
-                default:
-                    break;
-            }
-    } else {
-        for (var i in pizza.mix) {
-            console.log(pizza.mix[i]);
-            console.log(i);
-            switch (pizza.mix[i]) {
-                case "Jamón":
-                    document.getElementById('jamon').checked = true;
-                    break;
-                case "Peperoni":
-                    document.getElementById('pepe').checked = true;
-                    break;
-                case "Champiñones":
-                    document.getElementById('champ').checked = true;
-                    break;
-                case "Pimientos":
-                    document.getElementById('pimi').checked = true;
-                    break;
-                case "Cebolla":
-                    document.getElementById('cebol').checked = true;
-                    break;
-                case "Anchoas":
-                    document.getElementById('anch').checked = true;
-                    break;
-                case "Piña":
-                    document.getElementById('pina').checked = true;
-                    break;
-                case "Tomates":
-                    document.getElementById('tomat').checked = true;
-                    break;
-                case "Albahaca":
-                    document.getElementById('albah').checked = true;
-                    break;
-                default:
-                    break;
-            }
-        } 
-    }
+    for (var i in ingredientes) {
+        switch (ingredientes[i]) {
+            case "Jamón":
+                document.getElementById('jamon').checked = true;
+                break;
+            case "Peperoni":
+                document.getElementById('pepe').checked = true;
+                break;
+            case "Champiñones":
+                document.getElementById('champ').checked = true;
+                break;
+            case "Pimientos":
+                document.getElementById('pimi').checked = true;
+                break;
+            case "Cebolla":
+                document.getElementById('cebol').checked = true;
+                break;
+            case "Anchoas":
+                document.getElementById('anch').checked = true;
+                break;
+            case "Piña":
+                document.getElementById('pina').checked = true;
+                break;
+            case "Tomates":
+                document.getElementById('tomat').checked = true;
+                break;
+            case "Albahaca":
+                document.getElementById('albah').checked = true;
+                break;
+            default:
+                break;
+        }
+    } 
+
+
     var radio = document.getElementsByName('masa');
     switch (pizza.mass) {
         case "Delgada":
@@ -111,8 +76,8 @@ function loadPizzas(pizzaJSON)
 
     table.innerHTML = "";
     // Constantes 
-    let btn_edit = '<button type="submit" name="'
-    let btn_edit_f = '" class="btn btn-warning m-1">Editar</button>';
+    let btn_edit = '<button id="btn_UpdatePizza" onclick="window.location.href=\'pizzaCRUD/Update/'
+    let btn_edit_f = '\'" class="btn btn-warning m-1">Editar</button>';
     let btn_delete = '<button id="btn_DeletePizza" name="'
     let btn_delete_f = '" class="btn btn-danger m-1">Borrar</button>';
 
@@ -154,7 +119,7 @@ function makeRequest(requestType, requestLink, dataJSON, successFunction)
 function showMessage(dataJSON){
     $('#form_CreatePizza').fadeOut();
     $('#message').html(dataJSON.message);
-    $('#status').html(dataJSON.status);
+    $('#status').html(dataJSON.statusCode + " - " + dataJSON.statusMessage);
     $('#message').show();
     $('#status').show();
 }

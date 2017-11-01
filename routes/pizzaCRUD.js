@@ -5,11 +5,11 @@ let pizzas = {};
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('mainPizza', { title: 'Pizza CRUD', name: 'Pizza CRUD', rows : JSON.stringify(pizzas) });
+  res.render('mainPizza', { rows : JSON.stringify(pizzas) });
 });
 
 router.get('/Create', function(req, res, next) {
-  res.render('createPizza', { title: 'Pizza CRUD', name: 'Pizza CRUD' });
+  res.render('createPizza');
 });
 
 router.post('/Create', function(req, res, next)
@@ -17,7 +17,7 @@ router.post('/Create', function(req, res, next)
   pizzas[req.body.name] = req.body;
   res.status(201);
   res.statusMessage = "Created";
-  res.json({ message: 'Se ha agregado correctamente tu pizza: ' + req.body.name, status : res.statusCode  + " - " + res.statusMessage});
+  res.json({ message: 'Se ha agregado correctamente tu pizza: ' + req.body.name,statusCode : res.statusCode, statusMessage : res.statusMessage});
 });
 
 router.delete('/Delete', function(req, res, next) {
@@ -51,30 +51,47 @@ for (var pizzaKey in pizzas)
   if(showMessage === ''){
     res.status(200);
     res.statusMessage = "OK";
+    res.json({ message: showMessage, statusCode : res.statusCode, statusMessage : res.statusMessage, results : JSON.stringify(subPizzas) });
   }else{
-    res.status(204);
-    res.statusMessage = "No Content";
-    subPizzas = '';
+    /*res.status(404);
+    res.statusMessage = "Not Found";*/
+    res.json({ message: showMessage, statusCode : 404, statusMessage : 'Not Found', results : JSON.stringify('') });
   }
-  res.json({ message: showMessage, status : res.statusCode  + " - " + res.statusMessage, results : JSON.stringify(subPizzas) });
+  
 });
                                  
 
-
-
-router.post('/Updated', function(req, res, next)
+router.put('/Update', function(req, res, next)
 {
-  pizzas[req.body.pizzaName] = { name : req.body.pizzaName, desc : req.body.pizzaDesc, mix : req.body.mix, mass : req.body.masa, cheese : req.body.queso, pieces : req.body.porciones };
-  res.render('messagePizza', { title: 'Pizza CRUD', name: 'Pizza CRUD',  message1: 'Se ha editado correctamente tu pizza:', message2 : req.body.pizzaName});
- 
+  console.log(req.body);
+  if (pizzas[req.body.name]){
+    pizzas[req.body.name] = req.body;
+    /*res.status(204);
+    res.statusMessage = "No Content";*/
+    res.json({ message: 'Se ha actualizado correctamente tu pizza: ' + req.body.name, statusCode : 204, statusMessage : 'No Content'});
+  }else{
+    res.status(404);
+    res.statusMessage = "No Found";
+    res.json({ message: 'No se pudo actualizar la pizza: ' + req.body.name, status : res.statusCode  + " - " + res.statusMessage});
+  }
+  
 });
 
-router.get('/Update', function(req, res, next) {
-  var x = req.query.name // recupera el nombre de la pizza
+router.get('/Update/:pizzaName', function(req, res, next) {
+  var x = req.params.pizzaName // recupera el nombre de la pizza
   // recuperamos la pizza de pizzas
+  console.log(x);
   var pizza = pizzas[x];
 
-  res.render('updatePizza', { title: 'Pizza CRUD', name: 'Pizza CRUD', rows : JSON.stringify(pizza) });
+  if(pizza !== undefined){
+    res.status(200);
+    res.statusMessage = "OK";
+    res.render('updatePizza', { rows : JSON.stringify(pizza) });
+  }else{
+    res.status(204);
+    res.statusMessage = "No Content";
+    res.render('mainPizza', { rows : JSON.stringify(pizzas) });
+  }
 });
 
 module.exports = router;
