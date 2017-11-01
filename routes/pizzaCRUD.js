@@ -62,4 +62,19 @@ for (var pizzaKey in pizzas)
 
 
 
+router.post('/Updated', function(req, res, next)
+{
+  pizzas[req.body.pizzaName] = { name : req.body.pizzaName, desc : req.body.pizzaDesc, mix : req.body.mix, mass : req.body.masa, cheese : req.body.queso, pieces : req.body.porciones };
+  res.render('messagePizza', { title: 'Pizza CRUD', name: 'Pizza CRUD',  message1: 'Se ha editado correctamente tu pizza:', message2 : req.body.pizzaName});
+ 
+});
+
+router.get('/Update', function(req, res, next) {
+  var x = req.query.name // recupera el nombre de la pizza
+  // recuperamos la pizza de pizzas
+  var pizza = pizzas[x];
+
+  res.render('updatePizza', { title: 'Pizza CRUD', name: 'Pizza CRUD', rows : JSON.stringify(pizza) });
+});
+
 module.exports = router;
