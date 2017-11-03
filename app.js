@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var jwt = require('./routes/JWT');
 var pizzaCRUD = require('./routes/pizzaCRUD');
+var pizzaDB = require('./routes/pizzaDB');
 var app = express();
 
 
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/JWT', jwt);
 app.use('/pizzaCRUD', pizzaCRUD);
+app.use('/pizzaDB', pizzaDB);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
