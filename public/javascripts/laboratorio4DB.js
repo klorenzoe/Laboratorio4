@@ -120,6 +120,7 @@ function showMessage(dataJSON){
     $('#form_CreatePizza').fadeOut();
     $('#message').html(dataJSON.message);
     $('#status').html(dataJSON.statusCode + " - " + dataJSON.statusMessage);
+    console.log(dataJSON);
     $('#message').show();
     $('#status').show();
 }
