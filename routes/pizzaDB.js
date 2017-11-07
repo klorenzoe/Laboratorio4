@@ -29,9 +29,9 @@ router.get('/', function (req, res, next) {
       }
 
     }
+    res.status(200);
+    res.render('mainPizzaDB', { rows: JSON.stringify(pizzas) });
   });
-  res.status(200);
-  res.render('mainPizzaDB', { rows: JSON.stringify(pizzas) });
 });
 
 router.get('/Create', function (req, res, next) {
